@@ -1,4 +1,4 @@
-package com.example.consumerestapi.ui.theme
+package com.example.consumerestapi.ui
 
 import android.app.Activity
 import android.os.Build
