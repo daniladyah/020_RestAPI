@@ -1,4 +1,4 @@
-package com.example.consumerestapi.data
+package com.example.consumerestapi.repository
 
 import com.example.consumerestapi.network.KontakService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory

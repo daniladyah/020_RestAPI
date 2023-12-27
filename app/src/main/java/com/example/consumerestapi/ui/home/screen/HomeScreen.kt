@@ -113,7 +113,8 @@ fun  KontakCard(
                 )
                 Text(
                     text = kontak.alamat,
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme
+
                 )
             }
         }

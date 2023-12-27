@@ -9,7 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.consumerestapi.model.Kontak
-import com.example.consumerestapi.data.KontakRepository
+import com.example.consumerestapi.repository.KontakRepository
 import kotlinx.coroutines.launch
 import java.io.IOException
 

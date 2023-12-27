@@ -1,4 +1,4 @@
-package com.example.consumerestapi.ui
+package com.example.consumerestapi.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
