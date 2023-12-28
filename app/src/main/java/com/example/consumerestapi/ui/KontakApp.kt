@@ -2,6 +2,8 @@ package com.example.consumerestapi.ui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -22,38 +24,37 @@ import com.example.consumerestapi.ui.home.screen.HomeScreen
 import com.example.consumerestapi.ui.home.viewmodel.HomeViewModel
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun  KontakApp(
-    homeViewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
+fun KontakApp(
+    homeViewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory),
+    onDetailClick: (Int) -> Unit = {},
 ){
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Scaffold (
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { TopAppBar(scrollBehavior = scrollBehavior) }
+        topBar = { TopAppBarKontak(scrollBehavior = scrollBehavior, title = "null", canNavigateBack = true) }
     ){
         Surface (
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it)
         ){
-            HomeScreen(
-                kontakUIState = homeViewModel.kontakUIState,
-                retryAction = homeViewModel::getKontak
-            )
+            PengelolaHalaman()
         }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun  TopAppBar(scrollBehavior: TopAppBarScrollBehavior, modifier: Modifier = Modifier){
+fun TopAppBar(scrollBehavior: TopAppBarScrollBehavior, modifier: Modifier = Modifier){
     CenterAlignedTopAppBar(
         scrollBehavior = scrollBehavior,
         title = {
             Text(
                 text = stringResource(R.string.app_name),
                 style = MaterialTheme.typography.headlineSmall,
-                )
+            )
         },
         modifier = modifier
     )
@@ -66,19 +67,22 @@ fun TopAppBarKontak(
     modifier: Modifier = Modifier,
     scrollBehavior: TopAppBarScrollBehavior? = null,
     navigateUp: () -> Unit = {}
-){
-    CenterAlignedTopAppBar(title = { Text(title)},
-        modifier = modifier,
-        scrollBehavior = scrollBehavior,
-        navigationIcon = {
-            if (canNavigateBack){
-                IconButton(onClick = navigateUp) {
-                    Icon(
-                        imageVector = Icon.Filled.Arrow
-                        contentDescription = ""
-                    )
-                }
-
+){CenterAlignedTopAppBar(
+    title = {
+        Text(
+            text = stringResource(id = R.string.app_name),
+            style = MaterialTheme.typography.headlineSmall
+        )
+    },    modifier = modifier,
+    scrollBehavior = scrollBehavior,
+    navigationIcon = {
+        if (canNavigateBack) {
+            IconButton(onClick = navigateUp) {
+                Icon(
+                    imageVector = Icons.Filled.ArrowBack,
+                    contentDescription = ""
+                )
             }
-        })
+        }
+    })
 }
